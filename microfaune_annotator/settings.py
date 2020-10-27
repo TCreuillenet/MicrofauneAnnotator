@@ -25,7 +25,7 @@ SECRET_KEY = 'os3i!h@lijzfjl%_hb9xkqo-w&0e6q4#yh7v&s@hsi2uk@18(_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.31.3.164', 'microfaune-dev.eu-west-3.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['172.31.37.20', 'microfaune-dev.eu-west-3.elasticbeanstalk.com']
 
 
 # Application definition
@@ -99,12 +99,8 @@ if 'RDS_DB_NAME' in os.environ:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'microfaune',
-            'USER': 'microfaune',
-            'PASSWORD': 'microfaune',
-            'HOST': 'localhost',
-            'PORT': '5432',
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 
