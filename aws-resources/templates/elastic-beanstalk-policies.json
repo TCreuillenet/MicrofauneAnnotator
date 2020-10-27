@@ -1,0 +1,44 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": ["autoscaling:*", "cloudformation:*", "ec2:*"],
+      "Effect": "Allow",
+      "Resource": ["*"]
+    },
+    {
+      "Action": ["elasticbeanstalk:*"],
+      "Effect": "Allow",
+      "Resource": ["*"]
+    },
+    {
+      "Action": ["s3:GetObject"],
+      "Effect": "Allow",
+      "Resource": ["arn:aws:s3:::elasticbeanstalk-*/*"]
+    },
+    {
+      "Action": [
+        "s3:CreateBucket",
+        "s3:DeleteObject",
+        "s3:GetBucketPolicy",
+        "s3:GetObjectAcl",
+        "s3:ListBucket",
+        "s3:PutBucketPolicy",
+        "s3:PutObject",
+        "s3:PutObjectAcl"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::elasticbeanstalk-eu-west-3",
+        "arn:aws:s3:::elasticbeanstalk-eu-west-3/*"
+      ]
+    },
+    {
+      "Action": ["iam:PassRole"],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:iam::191169986231:role/role-elasticbeanstalk-deployer"
+      ]
+    }
+  ]
+}

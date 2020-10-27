@@ -8,7 +8,8 @@ verify_ssl = true
 [packages]
 django = "*"
 gunicorn = "*"
-django-heroku = "*"
+psycopg2-binary = "*"
+# django-heroku = "*"
 whitenoise = "*"
 librosa = "*"
 
