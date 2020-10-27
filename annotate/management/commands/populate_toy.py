@@ -12,18 +12,22 @@ class Command(BaseCommand):
     help = 'populate the database with toy data'
 
     def handle(self, *args, **options):
-        User.objects.create_user(username="admin", password="microfaune",
-                                 is_superuser=True, is_staff=True)
+        if not User.objects.filter(username="admin").exists():
+            User.objects.create_user(username="admin", password="microfaune",
+                                    is_superuser=True, is_staff=True)
 
-        user = User.objects.create_user(username="annotator",
-                                        password="microfaune")
+        if not User.objects.filter(username="annotator").exists():
+            user = User.objects.create_user(username="annotator",
+                                            password="microfaune")
 
-        project = Project.objects.create(name="CiteU", user=user)
+        if not Project.objects.filter(name="CiteU").exists():
+            project = Project.objects.create(name="CiteU", user=user)
 
         for audio_file in os.listdir(settings.MEDIA_ROOT):
-            AudioTrack.objects.create(
-                name=audio_file,
-                file=os.path.join(settings.MEDIA_URL, audio_file),
-                format="wav",
-                project=project,
-                duration=60)
+            if not AudioTrack.objects.filter(name=audio_file).exists:
+                AudioTrack.objects.create(
+                    name=audio_file,
+                    file=os.path.join(settings.MEDIA_URL, audio_file),
+                    format="wav",
+                    project=project,
+                    duration=60)
