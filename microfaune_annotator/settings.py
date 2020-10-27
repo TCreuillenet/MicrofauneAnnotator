@@ -25,7 +25,11 @@ SECRET_KEY = 'os3i!h@lijzfjl%_hb9xkqo-w&0e6q4#yh7v&s@hsi2uk@18(_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.31.37.20', 'microfaune-dev.eu-west-3.elasticbeanstalk.com', 'dev2.eba-ir9m9vx8.eu-west-3.elasticbeanstalk.com']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '.compute-1.amazonaws.com', # allows viewing of instances directly
+    '.elasticbeanstalk.com' 
 
 
 # Application definition
