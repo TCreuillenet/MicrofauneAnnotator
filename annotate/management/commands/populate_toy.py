@@ -19,12 +19,17 @@ class Command(BaseCommand):
         if not User.objects.filter(username="annotator").exists():
             user = User.objects.create_user(username="annotator",
                                             password="microfaune")
+        else:
+            user = User.objects.get(username="annotator")
 
         if not Project.objects.filter(name="CiteU").exists():
             project = Project.objects.create(name="CiteU", user=user)
+        else:
+            project = Project.objects.get(name="CiteU")
 
         for audio_file in os.listdir(settings.MEDIA_ROOT):
-            if not AudioTrack.objects.filter(name=audio_file).exists:
+            force = True
+            if force or not AudioTrack.objects.filter(name=audio_file).exists:
                 AudioTrack.objects.create(
                     name=audio_file,
                     file=os.path.join(settings.MEDIA_URL, audio_file),
