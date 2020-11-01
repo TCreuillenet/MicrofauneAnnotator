@@ -26,6 +26,7 @@ SECRET_KEY = 'os3i!h@lijzfjl%_hb9xkqo-w&0e6q4#yh7v&s@hsi2uk@18(_'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '172.31.20.246',
     '127.0.0.1',
     'localhost',
     '.compute-1.amazonaws.com', # allows viewing of instances directly
